@@ -1,0 +1,19 @@
+@use 'variables' as var;
+
+.spinner {
+  border: 1rem solid var.$color-blue-800;
+  border-right: 1rem solid var.$color-blue-50;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 100%;
+  animation: myAnimation 1s linear infinite;
+}
+
+@keyframes myAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,5 @@
+@use 'variables' as var;
+
+.error {
+  color: var.$color-red-500;
+}

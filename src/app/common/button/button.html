@@ -1,0 +1,11 @@
+<button
+  [type]="type()"
+  [disabled]="disabled()"
+  class="button"
+  [class.primary]="variant() === 'primary'"
+  [class.secondary]="variant() === 'secondary'"
+  [class.full]="size() === 'full'"
+  (click)="handleClick($event)"
+>
+  <ng-content />
+</button>

@@ -1,0 +1,28 @@
+<app-auth-form-wrapper>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <h2>Register</h2>
+    <div class="input-container">
+      <label for="email">Email</label>
+      <input id="email" type="text" placeholder="Email..." formControlName="email" />
+    </div>
+    <div class="input-container">
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Password..." formControlName="password" />
+    </div>
+    <div class="input-container">
+      <label for="confirm-password">Confirm password</label>
+      <input
+        id="confirm-password"
+        type="password"
+        placeholder="Confirm password..."
+        formControlName="confirmPassword"
+      />
+    </div>
+    <div class="btn-wrapper">
+      <app-button variant="primary" type="submit" size="full" [disabled]="!isFormValid"
+        >Register</app-button
+      >
+    </div>
+    <a [routerLink]="['/login']">Have an account? Login</a>
+  </form>
+</app-auth-form-wrapper>
