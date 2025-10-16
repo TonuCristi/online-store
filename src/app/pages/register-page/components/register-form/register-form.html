@@ -4,10 +4,16 @@
     <div class="input-container">
       <label for="email">Email</label>
       <input id="email" type="text" placeholder="Email..." formControlName="email" />
+      @if(getControlError('email')){
+      <app-message variant="error">{{ getControlError('email') }}</app-message>
+      }
     </div>
     <div class="input-container">
       <label for="password">Password</label>
       <input id="password" type="password" placeholder="Password..." formControlName="password" />
+      @if(getControlError('password')){
+      <app-message variant="error">{{ getControlError('password') }}</app-message>
+      }
     </div>
     <div class="input-container">
       <label for="confirm-password">Confirm password</label>
@@ -17,12 +23,24 @@
         placeholder="Confirm password..."
         formControlName="confirmPassword"
       />
+      @if(getControlError('confirmPassword')){
+      <app-message variant="error">{{ getControlError('confirmPassword') }}</app-message>
+      }
     </div>
     <div class="btn-wrapper">
-      <app-button variant="primary" type="submit" size="full" [disabled]="!isFormValid"
+      <app-button
+        variant="primary"
+        type="submit"
+        size="full"
+        [disabled]="!isFormValid || isRegisterLoading()"
         >Register</app-button
       >
     </div>
+    @if(getFormError()){
+    <div class="message-wrapper">
+      <app-message variant="error">{{ getFormError() }}</app-message>
+    </div>
+    }
     <a [routerLink]="['/login']">Have an account? Login</a>
   </form>
 </app-auth-form-wrapper>
