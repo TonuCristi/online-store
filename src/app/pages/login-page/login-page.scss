@@ -1,0 +1,25 @@
+@use 'variables' as var;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: var.$screen-xss) {
+  :host {
+    width: 30rem;
+  }
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+@media (min-width: var.$screen-xss) {
+  h1 {
+    font-size: 2.8rem;
+  }
+}

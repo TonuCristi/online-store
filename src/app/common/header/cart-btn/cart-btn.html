@@ -1,0 +1,98 @@
+<button (click)="toggleCart()">
+  C
+  <span>5</span>
+</button>
+
+@if(isCartOpen()){
+<div class="cart">
+  <button class="close-btn" (click)="toggleCart()">X</button>
+  <ul>
+    <li>
+      <a [routerLink]="['']">Product 1</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 2</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 3</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 4</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 5</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 1</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 2</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 3</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 4</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 5</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 1</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 2</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 3</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 4</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 5</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 1</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 2</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 3</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 4</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+    <li>
+      <a [routerLink]="['']">Product 5</a><span class="price">{{ 200 | currency }}</span
+      ><button>X</button>
+    </li>
+  </ul>
+  <p>
+    Total price <span>{{ 1000 | currency }}</span>
+  </p>
+  <a [routerLink]="['/cart']" class="cart-link"
+    ><app-button variant="primary" size="full">Go to cart</app-button></a
+  >
+</div>
+}

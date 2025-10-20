@@ -3,6 +3,11 @@ export interface RegisterUserForm {
   password: string;
 }
 
+export interface LoginUserForm {
+  email: string;
+  password: string;
+}
+
 export interface User {
   id: string;
   email: string;

@@ -1,6 +1,6 @@
 <app-auth-form-wrapper>
-  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-    <h2>Register</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <h2>Login</h2>
     @for(input of inputs;track input.name) {
     <div class="input-container">
       <label [for]="input.for">{{ input.label }}</label>
@@ -20,8 +20,8 @@
         variant="primary"
         type="submit"
         size="full"
-        [disabled]="!isFormValid || isRegisterLoading()"
-        >Register</app-button
+        [disabled]="!isFormValid || isLoginLoading()"
+        >Login</app-button
       >
     </div>
     @if(getFormError()){
@@ -29,6 +29,6 @@
       <app-message variant="error">{{ getFormError() }}</app-message>
     </div>
     }
-    <a [routerLink]="['/login']">Have an account? Login</a>
+    <a [routerLink]="['/register']">Don't have an account? Register</a>
   </form>
 </app-auth-form-wrapper>

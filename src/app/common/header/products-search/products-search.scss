@@ -1,0 +1,20 @@
+@use 'variables' as var;
+
+:host {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+}
+
+@media (min-width: var.$screen-xs) {
+  :host {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
+input {
+  border: 0.2rem solid var.$color-zinc-800;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  width: 100%;
+}

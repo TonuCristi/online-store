@@ -1,39 +1,10 @@
 {
   "users": [
     {
-      "id": "3af3",
+      "id": "0610",
       "email": "tonu.cristian19@gmail.com",
       "password": "12345678"
-    },
-    {
-      "id": "2a21",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "583a",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "96ee",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "1234567"
-    },
-    {
-      "id": "f53d",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "b04b",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "086e",
-      "email": "tonu.cristian19@gmail.com",
-      "password": "12345675"
     }
-  ]
+  ],
+  "products": []
 }
