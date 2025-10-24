@@ -26,14 +26,10 @@ export class AuthService {
     return { id: user.id, email: user.email };
   }
 
-  private navigateToHome() {
-    this.router.navigate(['/']);
-  }
-
   private saveUser(user: UserResponse) {
     this.user.set(user);
     this.saveToken(user.id);
-    this.navigateToHome();
+    this.router.navigate(['/']);
   }
 
   clearError() {
@@ -42,7 +38,7 @@ export class AuthService {
 
   register(newUser: RegisterUserForm) {
     this.isLoading.set(true);
-    return this.http.post<UserResponse>(this.url, newUser).pipe(
+    return this.http.post<UserResponse>(this.url, { ...newUser, role: 'user' }).pipe(
       delay(1000),
       map(this.mapUser),
       tap((result) => this.saveUser(result)),
