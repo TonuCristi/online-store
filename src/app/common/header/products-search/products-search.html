@@ -1,7 +1,6 @@
 <input
   type="text"
   placeholder="Search your product..."
-  ngModel
-  (ngModelChange)="onSearch($event)"
+  [(ngModel)]="searchValue"
+  (keyup)="onSearch()"
 />
-<p>{{ searchValue() }}</p>

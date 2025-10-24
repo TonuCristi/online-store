@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 export class ProductsSearch {
   searchValue = signal<string>('');
 
-  onSearch(value: string) {
-    console.log(value);
+  onSearch() {
+    console.log(this.searchValue());
   }
 }
