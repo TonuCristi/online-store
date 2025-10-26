@@ -16,13 +16,15 @@
     </div>
     }
     <div class="btn-wrapper">
-      <app-button
+      <button
+        appButton
         variant="primary"
         type="submit"
         size="full"
-        [disabled]="!isFormValid || isRegisterLoading()"
-        >Register</app-button
+        disabled="!isFormValid || isRegisterLoading()"
       >
+        Register
+      </button>
     </div>
     @if(getFormError()){
     <div class="message-wrapper">

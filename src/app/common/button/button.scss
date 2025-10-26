@@ -1,50 +1,42 @@
 @use 'variables' as var;
 
 :host {
-  width: auto;
   color: var.$color-zinc-50;
-}
-
-:host(.full) {
-  width: 100%;
-}
-
-.full {
-  width: 100%;
-}
-
-.button {
   white-space: nowrap;
-}
 
-.button:disabled {
-  cursor: not-allowed;
-}
+  &.full {
+    width: 100%;
+  }
 
-.primary {
-  background-color: var.$color-zinc-700;
-  padding: 0.5rem;
-  border-radius: 0.7rem;
-  transition: all 0.2s;
-}
+  &:disabled {
+    cursor: not-allowed;
+  }
 
-.primary:hover {
-  background-color: var.$color-zinc-800;
-}
+  &.primary {
+    background-color: var.$color-zinc-700;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    transition: all 0.2s;
 
-.primary:disabled {
-  background-color: var.$color-zinc-800;
-}
+    &:hover {
+      background-color: var.$color-zinc-800;
+    }
 
-.secondary {
-  color: var.$color-zinc-50;
-  transition: all 0.2s;
-}
+    &:disabled {
+      background-color: var.$color-zinc-800;
+    }
+  }
 
-.secondary:hover {
-  color: var.$color-zinc-300;
-}
+  &.secondary {
+    color: var.$color-zinc-50;
+    transition: all 0.2s;
 
-.secondary:disabled {
-  color: var.$color-zinc-300;
+    &:hover {
+      color: var.$color-zinc-300;
+    }
+
+    &:disabled {
+      color: var.$color-zinc-300;
+    }
+  }
 }

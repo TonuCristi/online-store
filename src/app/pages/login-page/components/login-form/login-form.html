@@ -16,13 +16,7 @@
     </div>
     }
     <div class="btn-wrapper">
-      <app-button
-        variant="primary"
-        type="submit"
-        size="full"
-        [disabled]="!isFormValid || isLoginLoading()"
-        >Login</app-button
-      >
+      <button appButton variant="primary" type="submit" size="full" [disabled]="true">Login</button>
     </div>
     @if(getFormError()){
     <div class="message-wrapper">

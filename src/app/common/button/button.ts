@@ -1,25 +1,25 @@
 import { Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[appButton]',
   imports: [],
   templateUrl: './button.html',
   styleUrl: './button.scss',
   host: {
-    '[class.full]': 'size() === "full"',
+    '[class.primary]': "variant() === 'primary'",
+    '[class.secondary]': "variant() === 'secondary'",
+    '[class.full]': "size() === 'full'",
+    '(click)': 'handleClick($event)',
   },
 })
 export class Button {
   readonly variant = input<'primary' | 'secondary'>();
   readonly size = input<'full'>();
-  readonly disabled = input<boolean>(false);
-  readonly type = input<HTMLButtonElement['type']>();
+
   onClick = output();
 
   handleClick(e: Event) {
-    if (this.type() !== 'submit') {
-      e.preventDefault();
-    }
+    e.preventDefault();
     this.onClick.emit();
   }
 }

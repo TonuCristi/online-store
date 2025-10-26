@@ -11,10 +11,10 @@ import {
 import { RouterLink } from '@angular/router';
 
 import { AuthFormWrapper } from '../../../../common/auth/auth-form-wrapper/auth-form-wrapper';
-import { Button } from '../../../../common/button/button';
 import { AuthService } from '../../../../services/auth-service';
 import { Message } from '../../../../common/message/message';
 import { getControlErrorMessage, getFormErrorMessage } from '../../../../utils/form-error.util';
+import { Button } from '../../../../common/button/button';
 
 @Component({
   selector: 'app-register-form',
