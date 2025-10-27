@@ -3,6 +3,7 @@
 :host {
   grid-row: 2;
   grid-column: 1 / span 2;
+  position: relative;
 }
 
 @media (min-width: var.$screen-xs) {
@@ -17,4 +18,16 @@ input {
   padding: 0.5rem;
   border-radius: 0.7rem;
   width: 100%;
+}
+
+.results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 1rem;
+  width: 100%;
+  border: 0.2rem solid var.$color-zinc-950;
+  border-radius: 0.7rem;
+  background-color: var.$color-zinc-50;
+  padding: 0.5rem;
 }

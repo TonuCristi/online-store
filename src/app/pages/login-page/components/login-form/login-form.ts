@@ -7,10 +7,12 @@ import { getControlErrorMessage, getFormErrorMessage } from '../../../../utils/f
 import { AuthFormWrapper } from '../../../../common/auth/auth-form-wrapper/auth-form-wrapper';
 import { Message } from '../../../../common/message/message';
 import { Button } from '../../../../common/button/button';
+import { Input } from '../../../../common/input/input';
+import { FormField } from '../../../../common/form-field/form-field';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule, RouterLink, AuthFormWrapper, Message, Button],
+  imports: [ReactiveFormsModule, RouterLink, AuthFormWrapper, Message, Button, Input, FormField],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
@@ -37,11 +39,11 @@ export class LoginForm implements OnDestroy {
   ];
 
   loginForm = new FormGroup({
-    email: new FormControl('', {
+    email: new FormControl('user@mail.com', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    password: new FormControl('', {
+    password: new FormControl('12345678', {
       nonNullable: true,
       validators: [Validators.required],
     }),

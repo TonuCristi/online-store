@@ -2,9 +2,9 @@
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <h2>Login</h2>
     @for(input of inputs;track input.name) {
-    <div class="input-container">
-      <label [for]="input.for">{{ input.label }}</label>
+    <app-form-field [label]="input.label" [for]="input.for">
       <input
+        appInput
         [id]="input.for"
         [type]="input.type"
         [placeholder]="input.placeholder"
@@ -13,11 +13,18 @@
       @if(getControlError(input.name)){
       <app-message variant="error">{{ getControlError(input.name) }}</app-message>
       }
-    </div>
+    </app-form-field>
     }
-    <div class="btn-wrapper">
-      <button appButton variant="primary" type="submit" size="full" [disabled]="true">Login</button>
-    </div>
+    <button
+      appButton
+      variant="primary"
+      type="submit"
+      size="full"
+      class="login-btn"
+      [disabled]="!isFormValid || isLoginLoading()"
+    >
+      Login
+    </button>
     @if(getFormError()){
     <div class="message-wrapper">
       <app-message variant="error">{{ getFormError() }}</app-message>

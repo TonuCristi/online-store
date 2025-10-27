@@ -1,0 +1,7 @@
+@use 'variables' as var;
+
+:host {
+  border: 0.2rem solid var.$color-zinc-950;
+  border-radius: 0.7rem;
+  padding: 0.5rem;
+}

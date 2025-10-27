@@ -15,10 +15,11 @@ import { AuthService } from '../../../../services/auth-service';
 import { Message } from '../../../../common/message/message';
 import { getControlErrorMessage, getFormErrorMessage } from '../../../../utils/form-error.util';
 import { Button } from '../../../../common/button/button';
+import { FormField } from '../../../../common/form-field/form-field';
 
 @Component({
   selector: 'app-register-form',
-  imports: [ReactiveFormsModule, RouterLink, AuthFormWrapper, Message, Button],
+  imports: [ReactiveFormsModule, RouterLink, AuthFormWrapper, Message, Button, FormField],
   templateUrl: './register-form.html',
   styleUrl: './register-form.scss',
 })

@@ -17,19 +17,7 @@ form {
     }
   }
 
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    input {
-      border: 0.2rem solid var.$color-zinc-950;
-      border-radius: 0.7rem;
-      padding: 0.5rem;
-    }
-  }
-
-  .btn-wrapper {
+  .login-btn {
     margin-top: 1rem;
   }
 

@@ -11,6 +11,18 @@
       "email": "admin@mail.com",
       "password": "12345678",
       "role": "admin"
+    },
+    {
+      "id": "e25c",
+      "email": "tonu.cristian19@gmail.com",
+      "password": "12345678",
+      "role": "user"
+    },
+    {
+      "id": "0084",
+      "email": "cristian.tonu@iongroup.com",
+      "password": "12345678",
+      "role": "user"
     }
   ],
   "products": [

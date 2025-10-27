@@ -9,17 +9,16 @@ import { Component, input, output } from '@angular/core';
     '[class.primary]': "variant() === 'primary'",
     '[class.secondary]': "variant() === 'secondary'",
     '[class.full]': "size() === 'full'",
-    '(click)': 'handleClick($event)',
+    '(click)': 'handleClick()',
   },
 })
 export class Button {
   readonly variant = input<'primary' | 'secondary'>();
   readonly size = input<'full'>();
 
-  onClick = output();
+  readonly onClick = output();
 
-  handleClick(e: Event) {
-    e.preventDefault();
+  handleClick() {
     this.onClick.emit();
   }
 }
