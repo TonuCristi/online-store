@@ -4,12 +4,26 @@
   placeholder="Search your product..."
   [(ngModel)]="searchValue"
   (keyup)="onSearch()"
+  (click)="toogleSearchResults()"
 />
 
-<ul class="results">
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
+@if(isSearchResultsOpen()){
+<ul>
+  @if(isSearchLoading()){
+  <app-spinner size="small" class="spinner" />
+  } @else if(!searchedProducts().length){
+  <p>Search your product...</p>
+  } @else { @for(product of searchedProducts(); track product.id){
+  <li>
+    <a [routerLink]="['/']">
+      <span class="product-name">
+        {{ product.name }}
+      </span>
+      <span>
+        {{ product.price | currency }}
+      </span>
+    </a>
+  </li>
+  } }
 </ul>
+}

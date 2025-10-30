@@ -1,12 +1,29 @@
 @use 'variables' as var;
 
-.spinner {
-  border: 1rem solid var.$color-blue-800;
-  border-right: 1rem solid var.$color-blue-50;
-  height: 7rem;
-  width: 7rem;
+:host {
   border-radius: 100%;
   animation: myAnimation 1s linear infinite;
+}
+
+:host.big {
+  height: 7rem;
+  width: 7rem;
+  border: 1rem solid var.$color-zinc-800;
+  border-right: 1rem solid var.$color-zinc-300;
+}
+
+:host.medium {
+  height: 5rem;
+  width: 5rem;
+  border: 0.8rem solid var.$color-zinc-800;
+  border-right: 0.8rem solid var.$color-zinc-300;
+}
+
+:host.small {
+  height: 3rem;
+  width: 3rem;
+  border: 0.6rem solid var.$color-zinc-800;
+  border-right: 0.6rem solid var.$color-zinc-300;
 }
 
 @keyframes myAnimation {

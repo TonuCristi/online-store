@@ -4,10 +4,11 @@ export interface ProductResponse {
   description: string;
   price: number;
   stock_quantity: number;
-  category_id: string;
   sku: string;
   image_url: string;
   is_active: boolean;
+  category_id: string;
+  user_id: string;
 }
 
 export interface Product {
@@ -15,9 +16,10 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  stock_quantity: number;
-  category_id: string;
+  stockQuantity: number;
   sku: string;
-  image_url: string;
-  is_active: boolean;
+  imageUrl: string;
+  isActive: boolean;
+  categoryId: string;
+  userId: string;
 }

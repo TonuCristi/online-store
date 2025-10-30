@@ -4,6 +4,7 @@ import { catchError, delay, finalize, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { LoginUserForm, RegisterUserForm, User, UserResponse } from '../models/user.model';
+import { mapUser } from '../utils/mapUser';
 
 @Injectable({
   providedIn: 'root',
@@ -18,17 +19,9 @@ export class AuthService {
   isLoading = signal<boolean>(false);
   error = signal<string>('');
 
-  private saveToken(token: string) {
-    localStorage.setItem('token', token);
-  }
-
-  private mapUser(user: UserResponse): User {
-    return { id: user.id, email: user.email };
-  }
-
   private saveUser(user: UserResponse) {
     this.user.set(user);
-    this.saveToken(user.id);
+    localStorage.setItem('token', user.id);
     this.router.navigate(['/']);
   }
 
@@ -40,7 +33,7 @@ export class AuthService {
     this.isLoading.set(true);
     return this.http.post<UserResponse>(this.url, { ...newUser, role: 'user' }).pipe(
       delay(1000),
-      map(this.mapUser),
+      map(mapUser),
       tap((result) => this.saveUser(result)),
       catchError(() => {
         this.error.set('Something went wrong!');
@@ -58,7 +51,7 @@ export class AuthService {
       )
       .pipe(
         delay(1000),
-        map((result) => result.map(this.mapUser)),
+        map((result) => result.map(mapUser)),
         tap((result) => {
           const user = result[0];
 

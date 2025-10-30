@@ -32,10 +32,11 @@
       "description": "Ergonomic Bluetooth mouse with 1600 DPI sensitivity.",
       "price": 29.99,
       "stock_quantity": 120,
-      "category_id": "3",
       "sku": "WM-BT-001",
       "image_url": "/images/wireless_mouse.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "3",
+      "user_id": "191b"
     },
     {
       "id": "2",
@@ -43,10 +44,11 @@
       "description": "Mechanical RGB keyboard with blue switches.",
       "price": 79.99,
       "stock_quantity": 75,
-      "category_id": "3",
       "sku": "GK-RGB-002",
       "image_url": "/images/gaming_keyboard.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "3",
+      "user_id": "191b"
     },
     {
       "id": "3",
@@ -54,10 +56,11 @@
       "description": "6.5-inch OLED display, 128GB storage, dual camera.",
       "price": 699,
       "stock_quantity": 50,
-      "category_id": "1",
       "sku": "SP-X12-003",
       "image_url": "/images/smartphone_x12.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "1",
+      "user_id": "191b"
     },
     {
       "id": "4",
@@ -65,10 +68,11 @@
       "description": "Portable waterproof speaker with deep bass.",
       "price": 49.99,
       "stock_quantity": 90,
-      "category_id": "1",
       "sku": "BS-BT-004",
       "image_url": "/images/bluetooth_speaker.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "1",
+      "user_id": "191b"
     },
     {
       "id": "5",
@@ -76,10 +80,11 @@
       "description": "Powerful laptop with Intel i7 processor and 16GB RAM.",
       "price": 1299.99,
       "stock_quantity": 30,
-      "category_id": "1",
       "sku": "LP-PRO15-005",
       "image_url": "/images/laptop_pro15.jpg",
-      "is_active": true
+      "is_active": false,
+      "category_id": "1",
+      "user_id": "191b"
     },
     {
       "id": "6",
@@ -87,10 +92,11 @@
       "description": "Energy-efficient wall-mounted air conditioner.",
       "price": 499.99,
       "stock_quantity": 25,
-      "category_id": "2",
       "sku": "AC-9000-006",
       "image_url": "/images/air_conditioner.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "2",
+      "user_id": "191b"
     },
     {
       "id": "7",
@@ -98,10 +104,11 @@
       "description": "Compact microwave with digital display and 5 power levels.",
       "price": 149.99,
       "stock_quantity": 40,
-      "category_id": "2",
       "sku": "MW-20L-007",
       "image_url": "/images/microwave_20l.jpg",
-      "is_active": true
+      "is_active": false,
+      "category_id": "2",
+      "user_id": "191b"
     },
     {
       "id": "8",
@@ -109,10 +116,11 @@
       "description": "Frost-free double door refrigerator with inverter compressor.",
       "price": 699.99,
       "stock_quantity": 20,
-      "category_id": "2",
       "sku": "RF-250-008",
       "image_url": "/images/refrigerator_250l.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "2",
+      "user_id": "191b"
     },
     {
       "id": "9",
@@ -120,10 +128,11 @@
       "description": "Wireless headphones with 40-hour battery life.",
       "price": 199.99,
       "stock_quantity": 60,
-      "category_id": "3",
       "sku": "NC-HP-009",
       "image_url": "/images/noise_headphones.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "3",
+      "user_id": "191b"
     },
     {
       "id": "10",
@@ -131,10 +140,11 @@
       "description": "Ultra HD smart TV with built-in streaming apps.",
       "price": 999.99,
       "stock_quantity": 15,
-      "category_id": "1",
       "sku": "TV-4K-010",
       "image_url": "/images/4k_tv.jpg",
-      "is_active": true
+      "is_active": true,
+      "category_id": "1",
+      "user_id": "191b"
     }
   ],
   "categories": [
