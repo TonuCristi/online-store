@@ -5,12 +5,17 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { ProfilePage } from './pages/profile-page/profile-page';
 import { LoginPage } from './pages/login-page/login-page';
 import { RegisterPage } from './pages/register-page/register-page';
+import { HomePage } from './pages/home-page/home-page';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayout,
     children: [
+      {
+        path: '',
+        component: HomePage,
+      },
       {
         path: 'profile',
         component: ProfilePage,

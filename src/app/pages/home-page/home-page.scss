@@ -1,0 +1,11 @@
+@use 'variables' as var;
+
+:host {
+  padding: 1rem;
+}
+
+@media (min-width: var.$screen-xs) {
+  :host {
+    padding: 2rem;
+  }
+}

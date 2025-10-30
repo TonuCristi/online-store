@@ -11,7 +11,7 @@
 <ul>
   @if(isSearchLoading()){
   <app-spinner size="small" class="spinner" />
-  } @else if(!searchedProducts().length){
+  } @else if(!searchValue().length){
   <p>Search your product...</p>
   } @else { @for(product of searchedProducts(); track product.id){
   <li>
