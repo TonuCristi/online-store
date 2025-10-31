@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, delay, finalize, map, of, tap } from 'rxjs';
+import { catchError, delay, finalize, map, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { LoginUserForm, RegisterUserForm, User, UserResponse } from '../models/user.model';
@@ -29,7 +29,7 @@ export class AuthService {
     this.error.set('');
   }
 
-  register(newUser: RegisterUserForm) {
+  register(newUser: RegisterUserForm): Observable<User | null> {
     this.isLoading.set(true);
     return this.http.post<UserResponse>(this.url, { ...newUser, role: 'user' }).pipe(
       delay(1000),
@@ -43,7 +43,7 @@ export class AuthService {
     );
   }
 
-  login(credentials: LoginUserForm) {
+  login(credentials: LoginUserForm): Observable<User | null> {
     this.isLoading.set(true);
     return this.http
       .get<UserResponse[]>(
@@ -51,9 +51,9 @@ export class AuthService {
       )
       .pipe(
         delay(1000),
-        map((result) => result.map(mapUser)),
+        map((result) => result.map(mapUser)[0]),
         tap((result) => {
-          const user = result[0];
+          const user = result;
 
           this.saveUser(user);
         }),

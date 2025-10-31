@@ -26,7 +26,9 @@ import { FormField } from '../../../../common/form-field/form-field';
 export class RegisterForm implements OnDestroy {
   private readonly authService = inject(AuthService);
 
-  isRegisterLoading = computed(() => this.authService.isLoading());
+  get isRegisterLoading() {
+    return this.authService.isLoading();
+  }
 
   readonly inputs = [
     {

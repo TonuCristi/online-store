@@ -1,0 +1,39 @@
+@use 'variables' as var;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: var.$color-zinc-50;
+  color: var.$color-zinc-950;
+  border-radius: 0.7rem;
+  overflow: hidden;
+
+  :host:hover {
+    box-shadow: 0 0.4rem 1.2rem 4rem rgba(0, 0, 0, 0.08);
+  }
+}
+
+img {
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+
+  p {
+    color: var.$color-green-600;
+    // color: var.$color-zinc-400;
+  }
+
+  span {
+    color: var.$color-red-500;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}

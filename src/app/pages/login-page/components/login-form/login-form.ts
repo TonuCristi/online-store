@@ -19,7 +19,9 @@ import { FormField } from '../../../../common/form-field/form-field';
 export class LoginForm implements OnDestroy {
   private readonly authService = inject(AuthService);
 
-  isLoginLoading = computed(() => this.authService.isLoading());
+  get isLoginLoading() {
+    return this.authService.isLoading();
+  }
 
   readonly inputs = [
     {

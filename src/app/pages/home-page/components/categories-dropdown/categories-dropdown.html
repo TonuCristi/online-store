@@ -1,1 +1,16 @@
-<p>categories-dropdown works!</p>
+<button appButton variant="primary" size="full" (click)="toggleDropdown()" class="categories-btn">
+  Categories
+</button>
+
+@if(isDropdownOpen()){
+<div class="dropdown">
+  <h3>All categories</h3>
+  <ul>
+    @for(category of categories; track category.id){
+    <li>
+      <a [routerLink]="['/']">{{ category.name }}</a>
+    </li>
+    }
+  </ul>
+</div>
+}

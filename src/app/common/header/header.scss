@@ -33,13 +33,11 @@ header {
 @media (min-width: var.$screen-md) {
   header {
     grid-template-columns: repeat(3, 1fr);
-    padding: 2rem;
   }
 }
 
 @media (min-width: var.$screen-xl) {
   header {
     grid-template-columns: 1fr 40rem 1fr;
-    padding: 2rem;
   }
 }

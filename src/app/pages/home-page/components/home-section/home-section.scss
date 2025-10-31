@@ -1,0 +1,40 @@
+@use 'variables' as var;
+
+section {
+  background-color: var.$color-zinc-700;
+  padding: 2rem;
+  border-radius: 0.7rem;
+  color: var.$color-zinc-50;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    @media (min-width: var.$screen-sm) {
+      h2 {
+        font-size: 2.4rem;
+      }
+    }
+  }
+
+  @media (min-width: var.$screen-sm) {
+    .wrapper {
+      width: 50rem;
+    }
+  }
+
+  @media (min-width: var.$screen-md) {
+    .wrapper {
+      width: 60rem;
+    }
+  }
+}
