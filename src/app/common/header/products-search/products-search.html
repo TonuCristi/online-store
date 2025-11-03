@@ -4,11 +4,11 @@
   placeholder="Search your product..."
   [(ngModel)]="searchValue"
   (keyup)="onSearch()"
-  (click)="toogleSearchResults()"
+  (click)="openSearchResults()"
 />
 
 @if(isSearchResultsOpen()){
-<ul>
+<ul appClickOutside (clickOutside)="closeSearchResults()">
   @if(isSearchLoading()){
   <app-spinner size="small" class="spinner" />
   } @else if(!searchValue().length){

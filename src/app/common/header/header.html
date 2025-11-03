@@ -1,10 +1,12 @@
 <header>
-  <a [routerLink]="['/']" class="home-link">OS</a>
-  <app-products-search />
-  <div class="controls">
-    <app-cart-btn />
-    <a [routerLink]="['/profile']" class="profile-link"
-      ><button appButton variant="primary">Profile</button></a
-    >
+  <div class="wrapper">
+    <a [routerLink]="['/']" class="home-link">OS</a>
+    <app-products-search />
+    <div class="controls">
+      <app-cart-btn />
+      <a [routerLink]="['/profile']" class="profile-link"
+        ><button appButton variant="primary">Profile</button></a
+      >
+    </div>
   </div>
 </header>
