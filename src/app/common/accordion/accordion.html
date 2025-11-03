@@ -1,0 +1,15 @@
+<div class="accordion">
+  <header (click)="toogleAccordion()">
+    <h3>{{ title() }}</h3>
+    @if(isExpanded()){
+    <span>⬇️</span>
+    }@else {
+    <span>⬆️</span>
+    }
+  </header>
+  @if(isExpanded()) {
+  <div class="content">
+    <ng-content />
+  </div>
+  }
+</div>

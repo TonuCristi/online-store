@@ -6,9 +6,9 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './button.html',
   styleUrl: './button.scss',
   host: {
-    '[class.primary]': "variant() === 'primary'",
-    '[class.secondary]': "variant() === 'secondary'",
-    '[class.full]': "size() === 'full'",
+    '[class.primary]': 'variant() === "primary"',
+    '[class.secondary]': 'variant() === "secondary"',
+    '[class.full]': 'size() === "full"',
     '(click)': 'handleClick()',
   },
 })

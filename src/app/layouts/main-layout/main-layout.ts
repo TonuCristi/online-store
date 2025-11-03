@@ -4,10 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from '../../common/header/header';
 import { CategoriesService } from '../../services/categories-service';
 import { Spinner } from '../../common/spinner/spinner';
+import { Footer } from '../../common/footer/footer';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [RouterOutlet, Header, Spinner],
+  imports: [RouterOutlet, Header, Spinner, Footer],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
