@@ -1,1 +1,18 @@
-<p>products-page works!</p>
+@if(isLoading()){
+<div class="spinner-wrapper">
+  <app-spinner size="big" />
+</div>
+} @else {
+<div class="catalog">
+  <div class="products-filters-wrapper">
+    <app-products-filters />
+  </div>
+  <h1>{{ category()?.name }}</h1>
+  <app-products-sort />
+  <ul>
+    @for(product of products(); track product.id){
+    <app-product-card [product]="product" />
+    }
+  </ul>
+</div>
+}

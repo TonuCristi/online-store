@@ -6,6 +6,7 @@ import { LoginPage } from './pages/login-page/login-page';
 import { RegisterPage } from './pages/register-page/register-page';
 import { HomePage } from './pages/home-page/home-page';
 import { ProfilePage } from './pages/profile-page/profile-page';
+import { ProductsPage } from './pages/products-page/products-page';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: ProfilePage,
+      },
+      {
+        path: 'products/:categoryId',
+        component: ProductsPage,
       },
     ],
   },

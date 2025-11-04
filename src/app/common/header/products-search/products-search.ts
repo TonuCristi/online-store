@@ -1,6 +1,5 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { catchError, finalize, of, tap } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 
@@ -28,17 +27,18 @@ export class ProductsSearch implements OnDestroy {
   ngOnDestroy(): void {}
 
   openSearchResults() {
-    console.log('open');
-    this.isSearchResultsOpen.set(true);
+    if (!this.isSearchResultsOpen()) {
+      this.isSearchResultsOpen.set(true);
+    }
   }
 
   closeSearchResults() {
-    console.log('close');
-    this.isSearchResultsOpen.set(false);
-    this.searchValue.set('');
-    this.searchedProducts.set([]);
-    this.searchError.set('');
-    // this.productsService.searchProducts(this.searchValue().toLowerCase()).
+    if (!this.isSearchLoading()) {
+      this.isSearchResultsOpen.set(false);
+      this.searchValue.set('');
+      this.searchedProducts.set([]);
+      this.searchError.set('');
+    }
   }
 
   onSearch() {

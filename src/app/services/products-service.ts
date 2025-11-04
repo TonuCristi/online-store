@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { delay, map, of } from 'rxjs';
+import { delay, map, Observable, of } from 'rxjs';
 
-import { ProductResponse } from '../models/product.model';
+import { Product, ProductResponse } from '../models/product.model';
 import { mapProduct } from '../utils/mapProduct';
+
+interface ProductsParams {
+  categoryId: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +16,16 @@ export class ProductsService {
   private url = 'http://localhost:3000/products';
   private http = inject(HttpClient);
 
-  searchProducts(searchValue: string) {
+  getProducts(params: ProductsParams): Observable<Product[]> {
+    return this.http.get<ProductResponse[]>(`${this.url}?category_id=${params.categoryId}`).pipe(
+      delay(1000),
+      map((result) => {
+        return result.map((product) => mapProduct(product));
+      })
+    );
+  }
+
+  searchProducts(searchValue: string): Observable<Product[]> {
     if (!searchValue) return of([]);
 
     return this.http.get<ProductResponse[]>(this.url).pipe(

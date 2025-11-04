@@ -1,14 +1,14 @@
 <div class="accordion">
-  <header (click)="toogleAccordion()">
+  <header (click)="openAccordion()">
     <h3>{{ title() }}</h3>
-    @if(isExpanded()){
+    @if(isOpen()){
     <span>⬇️</span>
     }@else {
     <span>⬆️</span>
     }
   </header>
-  @if(isExpanded()) {
-  <div class="content">
+  @if(isOpen()) {
+  <div class="content" appClickOutside (clickOutside)="closeAccordion()">
     <ng-content />
   </div>
   }

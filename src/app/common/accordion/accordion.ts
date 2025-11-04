@@ -1,16 +1,24 @@
 import { Component, input, signal } from '@angular/core';
 
+import { ClickOutside } from '../../directives/click-outside';
+
 @Component({
   selector: 'app-accordion',
-  imports: [],
+  imports: [ClickOutside],
   templateUrl: './accordion.html',
   styleUrl: './accordion.scss',
 })
 export class Accordion {
   title = input.required<string>();
-  isExpanded = signal<boolean>(false);
+  isOpen = signal<boolean>(false);
 
-  toogleAccordion() {
-    this.isExpanded.update((prev) => !prev);
+  openAccordion() {
+    if (!this.isOpen()) {
+      this.isOpen.set(true);
+    }
+  }
+
+  closeAccordion() {
+    this.isOpen.set(false);
   }
 }

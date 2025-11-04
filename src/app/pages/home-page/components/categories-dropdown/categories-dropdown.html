@@ -1,14 +1,14 @@
-<button appButton variant="primary" size="full" (click)="toggleDropdown()" class="categories-btn">
+<button appButton variant="primary" size="full" (click)="openDropdown()" class="categories-btn">
   Categories
 </button>
 
 @if(isDropdownOpen()){
-<div class="dropdown">
+<div class="dropdown" appClickOutside (clickOutside)="closeDropdown()">
   <h3>All categories</h3>
   <ul>
     @for(category of categories; track category.id){
     <li>
-      <a [routerLink]="['/']">{{ category.name }}</a>
+      <a [routerLink]="[`/products/${category.id}`]">{{ category.name }}</a>
     </li>
     }
   </ul>

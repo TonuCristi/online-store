@@ -30,4 +30,8 @@ export class CategoriesService {
       })
     );
   }
+
+  getCategory(categoryId: string): Observable<Category | null> {
+    return this.http.get<CategoryResponse>(`${this.url}/${categoryId}`).pipe(delay(1000));
+  }
 }
