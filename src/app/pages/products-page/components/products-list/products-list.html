@@ -1,0 +1,13 @@
+<ul>
+  @for(product of products(); track product.id){
+  <app-product-card [product]="product" />
+  }
+</ul>
+<div class="pagination-wrapper">
+  <app-pagination
+    [currentPage]="currentPage()"
+    [perPage]="perPage"
+    (next)="nextPage()"
+    (prev)="prevPage()"
+  />
+</div>

@@ -1,0 +1,5 @@
+<button appButton variant="primary" (click)="prevPage()">Prev</button>
+<button appButton class="page-btn" [class.hidden]="currentPage() === 0">{{ currentPage() }}</button>
+<button appButton class="page-btn active-page-btn">{{ currentPage() + 1 }}</button>
+<button appButton class="page-btn">{{ currentPage() + 2 }}</button>
+<button appButton variant="primary" (click)="nextPage()">Next</button>

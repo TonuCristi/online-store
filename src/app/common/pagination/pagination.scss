@@ -1,0 +1,47 @@
+@use 'variables' as var;
+
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: var.$screen-xss) {
+  :host {
+    grid-template-columns: auto repeat(3, 1fr) auto;
+  }
+}
+
+.page-btn {
+  font-weight: 600;
+  width: 3rem;
+  height: 3rem;
+  color: var.$color-zinc-700;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: var.$screen-xss) {
+  .page-btn {
+    display: flex;
+  }
+}
+
+.page-btn.hidden {
+  display: none;
+}
+
+.active-page-btn {
+  border: 0.2rem solid var.$color-zinc-700;
+  border-radius: 100%;
+  display: flex;
+  grid-column: 2;
+}
+
+@media (min-width: var.$screen-xss) {
+  .active-page-btn {
+    grid-column: 3;
+  }
+}

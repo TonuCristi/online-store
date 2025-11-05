@@ -10,10 +10,12 @@ import { ProductsService } from '../../services/products-service';
 import { Spinner } from '../../common/spinner/spinner';
 import { CategoriesService } from '../../services/categories-service';
 import { Category } from '../../models/category.model';
+import { Pagination } from '../../common/pagination/pagination';
+import { ProductsList } from './components/products-list/products-list';
 
 @Component({
   selector: 'app-products-page',
-  imports: [ProductsFilters, ProductsSort, ProductCard, Spinner],
+  imports: [ProductsFilters, ProductsSort, Spinner, ProductsList],
   templateUrl: './products-page.html',
   styleUrl: './products-page.scss',
 })

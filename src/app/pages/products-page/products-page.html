@@ -9,10 +9,8 @@
   </div>
   <h1>{{ category()?.name }}</h1>
   <app-products-sort />
-  <ul>
-    @for(product of products(); track product.id){
-    <app-product-card [product]="product" />
-    }
-  </ul>
+  <div class="products-list-wrapper">
+    <app-products-list [products]="products()" />
+  </div>
 </div>
 }
