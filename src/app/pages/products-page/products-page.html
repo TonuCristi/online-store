@@ -10,7 +10,12 @@
   <h1>{{ category()?.name }}</h1>
   <app-products-sort />
   <div class="products-list-wrapper">
-    <app-products-list [products]="products()" />
+    <app-products-list
+      [products]="products()"
+      [currentPage]="currentPage()"
+      (incrementPage)="incrementPage()"
+      (decrementPage)="decrementPage()"
+    />
   </div>
 </div>
 }

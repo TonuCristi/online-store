@@ -1,13 +1,19 @@
+@if(isLoading()){
+<div class="spinner-wrapper">
+  <app-spinner size="medium" />
+</div>
+}@else {
 <ul>
   @for(product of products(); track product.id){
   <app-product-card [product]="product" />
   }
 </ul>
+}
 <div class="pagination-wrapper">
   <app-pagination
     [currentPage]="currentPage()"
-    [perPage]="perPage"
-    (next)="nextPage()"
+    [isLoading]="isLoading()"
     (prev)="prevPage()"
+    (next)="nextPage()"
   />
 </div>

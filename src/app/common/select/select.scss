@@ -1,0 +1,15 @@
+@use 'variables' as var;
+
+:host {
+  border: 0.2rem solid var.$color-zinc-700;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+}
+
+:host.auto {
+  width: auto;
+}
+
+:host.full {
+  width: 100%;
+}

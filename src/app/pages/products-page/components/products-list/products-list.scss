@@ -6,6 +6,12 @@
   gap: 2rem;
 }
 
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ul {
   display: grid;
   grid-template-columns: 1fr;

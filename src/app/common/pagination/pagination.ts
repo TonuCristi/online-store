@@ -10,15 +10,15 @@ import { Button } from '../button/button';
 })
 export class Pagination {
   currentPage = input.required<number>();
-  perPage = input.required<number>();
-  next = output();
+  isLoading = input.required<boolean>();
   prev = output();
-
-  nextPage() {
-    this.next.emit();
-  }
+  next = output();
 
   prevPage() {
     this.prev.emit();
+  }
+
+  nextPage() {
+    this.next.emit();
   }
 }

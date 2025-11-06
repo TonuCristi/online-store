@@ -7,6 +7,8 @@ import { mapProduct } from '../utils/mapProduct';
 
 interface ProductsParams {
   categoryId: string;
+  currentPage: number;
+  perPage: number;
 }
 
 @Injectable({
@@ -17,12 +19,19 @@ export class ProductsService {
   private http = inject(HttpClient);
 
   getProducts(params: ProductsParams): Observable<Product[]> {
-    return this.http.get<ProductResponse[]>(`${this.url}?category_id=${params.categoryId}`).pipe(
-      delay(1000),
-      map((result) => {
-        return result.map((product) => mapProduct(product));
-      })
-    );
+    const start = params.currentPage * params.perPage;
+    const limit = (params.currentPage + 1) * params.perPage;
+
+    return this.http
+      .get<ProductResponse[]>(
+        `${this.url}?category_id=${params.categoryId}&_start=${start}&_limit=${limit}`
+      )
+      .pipe(
+        delay(1000),
+        map((result) => {
+          return result.map((product) => mapProduct(product));
+        })
+      );
   }
 
   searchProducts(searchValue: string): Observable<Product[]> {
