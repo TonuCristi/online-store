@@ -10,7 +10,8 @@ import { Button } from '../button/button';
 })
 export class Pagination {
   currentPage = input.required<number>();
-  isLoading = input.required<boolean>();
+  totalPages = input.required<number>();
+  isProductsLoading = input.required<boolean>();
   prev = output();
   next = output();
 

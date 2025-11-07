@@ -23,3 +23,5 @@ export interface Product {
   categoryId: string;
   userId: string;
 }
+
+export type SortType = 'name' | 'price-ascending' | 'price-descending';

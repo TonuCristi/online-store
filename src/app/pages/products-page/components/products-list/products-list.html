@@ -1,4 +1,4 @@
-@if(isLoading()){
+@if(isProductsLoading()){
 <div class="spinner-wrapper">
   <app-spinner size="medium" />
 </div>
@@ -9,11 +9,3 @@
   }
 </ul>
 }
-<div class="pagination-wrapper">
-  <app-pagination
-    [currentPage]="currentPage()"
-    [isLoading]="isLoading()"
-    (prev)="prevPage()"
-    (next)="nextPage()"
-  />
-</div>

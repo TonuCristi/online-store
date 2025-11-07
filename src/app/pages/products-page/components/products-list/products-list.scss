@@ -1,11 +1,5 @@
 @use 'variables' as var;
 
-:host {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .spinner-wrapper {
   display: flex;
   align-items: center;
@@ -28,8 +22,4 @@ ul {
   ul {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-.pagination-wrapper {
-  align-self: center;
 }

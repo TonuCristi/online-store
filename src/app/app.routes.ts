@@ -7,6 +7,7 @@ import { RegisterPage } from './pages/register-page/register-page';
 import { HomePage } from './pages/home-page/home-page';
 import { ProfilePage } from './pages/profile-page/profile-page';
 import { ProductsPage } from './pages/products-page/products-page';
+import { ProductsService } from './services/products-service';
 
 export const routes: Routes = [
   {
@@ -19,11 +20,13 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfilePage,
+        loadComponent: () =>
+          import('../app/pages/profile-page/profile-page').then((m) => m.ProfilePage),
       },
       {
         path: 'products/:categoryId',
-        component: ProductsPage,
+        loadComponent: () =>
+          import('../app/pages/products-page/products-page').then((m) => m.ProductsPage),
       },
     ],
   },

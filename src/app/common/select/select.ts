@@ -1,17 +1,12 @@
 import { Component, input, output } from '@angular/core';
 
-interface Option {
-  value: string;
-  text: string;
-}
-
 @Component({
   selector: 'select[appSelect]',
   imports: [],
   templateUrl: './select.html',
   styleUrl: './select.scss',
   host: {
-    '(change)': 'onChange()',
+    '(change)': 'onSelect($event)',
     '[class.full]': 'size() === "full"',
     '[class.auto]': 'size() === "auto"',
   },
@@ -19,9 +14,18 @@ interface Option {
 export class Select {
   size = input.required<'full' | 'auto'>();
   options = input.required<Option[]>();
-  onSelect = output();
+  onChange = output<string>();
 
-  onChange() {
-    this.onSelect.emit();
+  onSelect(e: Event) {
+    const target = e.target as HTMLSelectElement;
+
+    if (target) {
+      this.onChange.emit(target.value);
+    }
   }
+}
+
+export interface Option {
+  value: string;
+  text: string;
 }

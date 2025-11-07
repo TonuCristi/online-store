@@ -45,6 +45,16 @@
       grid-column: 2;
     }
   }
+
+  .pagination-wrapper {
+    justify-self: center;
+  }
+
+  @media (min-width: var.$screen-md) {
+    .pagination-wrapper {
+      grid-column: 2;
+    }
+  }
 }
 
 @media (min-width: var.$screen-md) {

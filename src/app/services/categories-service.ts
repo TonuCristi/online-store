@@ -18,16 +18,12 @@ export class CategoriesService {
   getCategories(): Observable<Category[]> {
     return this.http.get<CategoryResponse[]>(this.url).pipe(
       delay(1000),
-      tap((result) => {
-        this.categories.set(result);
-      }),
+      tap((result) => this.categories.set(result)),
       catchError(() => {
         this.error.set('Something went wrong!');
         return of([]);
       }),
-      finalize(() => {
-        this.isLoading.set(false);
-      })
+      finalize(() => this.isLoading.set(false))
     );
   }
 

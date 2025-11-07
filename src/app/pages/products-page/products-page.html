@@ -8,13 +8,17 @@
     <app-products-filters />
   </div>
   <h1>{{ category()?.name }}</h1>
-  <app-products-sort />
+  <select appSelect size="full" [options]="options" (onChange)="sortData($event)"></select>
   <div class="products-list-wrapper">
-    <app-products-list
-      [products]="products()"
+    <app-products-list [products]="products()" [isProductsLoading]="isProductsLoading()" />
+  </div>
+  <div class="pagination-wrapper">
+    <app-pagination
       [currentPage]="currentPage()"
-      (incrementPage)="incrementPage()"
-      (decrementPage)="decrementPage()"
+      [totalPages]="totalPages()"
+      [isProductsLoading]="isProductsLoading()"
+      (prev)="loadPrevPage()"
+      (next)="loadNextPage()"
     />
   </div>
 </div>

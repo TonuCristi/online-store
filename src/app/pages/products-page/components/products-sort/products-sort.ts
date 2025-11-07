@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
-import { Select } from '../../../../common/select/select';
+import { Option, Select } from '../../../../common/select/select';
+import { SortType } from '../../../../models/product.model';
 
 @Component({
   selector: 'app-products-sort',
@@ -9,9 +10,10 @@ import { Select } from '../../../../common/select/select';
   styleUrl: './products-sort.scss',
 })
 export class ProductsSort {
-  readonly options = [
+  readonly options: Option[] = [
     { value: 'name', text: 'Name' },
     { value: 'price-ascending', text: 'Price ascending' },
     { value: 'price-descending', text: 'Price descending' },
   ];
+  sortType = input.required<SortType>();
 }
