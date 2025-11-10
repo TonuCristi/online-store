@@ -17,3 +17,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.active {
+  background-color: var.$color-zinc-700;
+  color: var.$color-zinc-50;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+}

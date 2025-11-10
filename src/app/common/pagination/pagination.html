@@ -1,13 +1,44 @@
 <button appButton variant="primary" [disabled]="isProductsLoading()" (click)="prevPage()">
   Prev
 </button>
-<!-- @if(currentPage() > 0){
-<button appButton class="page-btn">{{ currentPage() }}</button>
-} -->
-<span class="page-btn">{{ currentPage() + 1 }}</span>
-<!-- @if(currentPage() < totalPages() - 1){
-<button appButton class="page-btn">{{ currentPage() + 2 }}</button>
-} -->
+@if(currentPage() > 2) {
+<button appButton class="page-btn">
+  {{ 1 }}
+</button>
+} @for(page of pages();track page){ @if(page < 3){
+<button appButton class="page-btn" [class.active]="currentPage() === page">
+  {{ page + 1 }}
+</button>
+} }
+<span>...</span>
+<button appButton class="page-btn">
+  {{ totalPages() }}
+</button>
+<!-- @if(currentPage() < 3){
+<button appButton class="page-btn" [class.active]="currentPage() === 0">1</button>
+<button appButton class="page-btn" [class.active]="currentPage() === 1">2</button>
+<button appButton class="page-btn" [class.active]="currentPage() === 2">3</button>
+} @if(currentPage() === 2){
+<button appButton class="page-btn" [class.active]="currentPage() === 3">
+  {{ 4 }}
+</button>
+} @if(currentPage() > 2){
+<button appButton class="page-btn" [class.active]="currentPage() === 3">
+  {{ currentPage() }}
+</button>
+<button appButton class="page-btn" [class.active]="currentPage() === 3">
+  {{ currentPage() + 1 }}
+</button>
+<button appButton class="page-btn" [class.active]="currentPage() === 3">
+  {{ currentPage() + 2 }}
+</button>
+}
+<span>...</span>
+@if(currentPage() === 8){
+<button appButton class="page-btn">{{ currentPage() - 2 }}</button>
+<button appButton class="page-btn">{{ currentPage() - 1 }}</button>
+}
+<button appButton class="page-btn">{{ totalPages() }}</button> -->
 <button appButton variant="primary" [disabled]="isProductsLoading()" (click)="nextPage()">
   Next
 </button>
