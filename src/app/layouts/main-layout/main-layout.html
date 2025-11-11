@@ -1,11 +1,11 @@
+@if(isLoading()){
+<div class="spinner-wrapper">
+  <app-spinner size="big" />
+</div>
+} @else {
 <app-header />
 <main>
-  @if(isCategoriesLoading){
-  <div class="spinner-wrapper">
-    <app-spinner size="big" />
-  </div>
-  } @else {
   <router-outlet />
-  }
 </main>
 <app-footer />
+}

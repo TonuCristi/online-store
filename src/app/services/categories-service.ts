@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { catchError, delay, finalize, Observable, of, tap } from 'rxjs';
 
-import { Category, CategoryResponse } from '../models/category.model';
+import { Category } from '../models/category.model';
+import { API_CONFIG } from '../config/api.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesService {
-  private readonly url = 'http://localhost:3000/categories';
+  private readonly url = `${API_CONFIG.baseUrl}/categories`;
   private readonly http = inject(HttpClient);
 
   categories = signal<Category[]>([]);
@@ -16,7 +17,7 @@ export class CategoriesService {
   error = signal<string>('');
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<CategoryResponse[]>(this.url).pipe(
+    return this.http.get<Category[]>(this.url).pipe(
       delay(1000),
       tap((result) => this.categories.set(result)),
       catchError(() => {
@@ -28,6 +29,6 @@ export class CategoriesService {
   }
 
   getCategory(categoryId: string): Observable<Category | null> {
-    return this.http.get<CategoryResponse>(`${this.url}/${categoryId}`).pipe(delay(1000));
+    return this.http.get<Category>(`${this.url}/${categoryId}`).pipe(delay(1000));
   }
 }

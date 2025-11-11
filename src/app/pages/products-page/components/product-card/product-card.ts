@@ -1,9 +1,10 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { Button } from '../../../../common/button/button';
 import { Product } from '../../../../models/product.model';
+import { CartService } from '../../../../services/cart-service';
 
 @Component({
   selector: 'app-product-card',
@@ -12,12 +13,16 @@ import { Product } from '../../../../models/product.model';
   styleUrl: './product-card.scss',
 })
 export class ProductCard {
+  private readonly cartService = inject(CartService);
+
   product = input.required<Product>();
 
   addToCard(e: Event) {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log('asd');
+    console.log(this.product());
+
+    this.cartService.addToCart(this.product());
   }
 }

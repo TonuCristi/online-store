@@ -69,14 +69,14 @@ export class ProductsPage implements OnInit {
   loadPrevPage() {
     if (this.currentPage() > 0) {
       this.currentPage.update((prev) => prev - 1);
-      // this.loadProducts();
+      this.loadProducts();
     }
   }
 
   loadNextPage() {
     if (this.currentPage() < this.totalPages() - 1) {
       this.currentPage.update((prev) => prev + 1);
-      // this.loadProducts();
+      this.loadProducts();
     }
   }
 

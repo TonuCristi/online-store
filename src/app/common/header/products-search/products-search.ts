@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
@@ -15,7 +15,7 @@ import { ClickOutside } from '../../../directives/click-outside';
   templateUrl: './products-search.html',
   styleUrl: './products-search.scss',
 })
-export class ProductsSearch implements OnDestroy {
+export class ProductsSearch {
   productsService = inject(ProductsService);
 
   searchValue = signal<string>('');
@@ -23,8 +23,6 @@ export class ProductsSearch implements OnDestroy {
   isSearchLoading = signal<boolean>(false);
   searchError = signal<string>('');
   isSearchResultsOpen = signal<boolean>(false);
-
-  ngOnDestroy(): void {}
 
   openSearchResults() {
     if (!this.isSearchResultsOpen()) {

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
 
-import { Product, ProductResponse, SortType } from '../models/product.model';
-import { mapProduct } from '../utils/mapProduct';
+import { Product, SortType } from '../models/product.model';
 import { PER_PAGE } from '../pages/products-page/products.constants';
+import { API_CONFIG } from '../config/api.config';
 
 interface ProductsParams {
   categoryId: string;
@@ -17,11 +17,11 @@ interface ProductsParams {
   providedIn: 'root',
 })
 export class ProductsService {
-  private url = 'http://localhost:3000/products';
+  private url = `${API_CONFIG.baseUrl}/products`;
   private http = inject(HttpClient);
 
   getProductsTotalPages(categoryId: string): Observable<number> {
-    return this.http.get<ProductResponse[]>(`${this.url}?category_id=${categoryId}`).pipe(
+    return this.http.get<Product[]>(`${this.url}?categoryId=${categoryId}`).pipe(
       delay(1000),
       map((result) => Math.ceil(result.length / PER_PAGE))
     );
@@ -38,24 +38,19 @@ export class ProductsService {
     }[params.sortType];
 
     return this.http
-      .get<ProductResponse[]>(
-        `${this.url}?category_id=${params.categoryId}&_start=${start}&_limit=${limit}&_sort=${sort}`
+      .get<Product[]>(
+        `${this.url}?categoryId=${params.categoryId}&_start=${start}&_limit=${limit}&_sort=${sort}`
       )
-      .pipe(
-        delay(1000),
-        map((result) => result.map((product) => mapProduct(product)))
-      );
+      .pipe(delay(1000));
   }
 
   searchProducts(searchValue: string): Observable<Product[]> {
     if (!searchValue) return of([]);
 
-    return this.http.get<ProductResponse[]>(this.url).pipe(
+    return this.http.get<Product[]>(this.url).pipe(
       delay(1000),
       map((result) => {
-        const mappedProducts = result.map((product) => mapProduct(product));
-
-        return mappedProducts.filter((product) =>
+        return result.filter((product) =>
           `${product.name}${product.description}`.toLowerCase().includes(searchValue.toLowerCase())
         );
       })

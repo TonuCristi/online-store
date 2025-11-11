@@ -8,12 +8,6 @@ export interface LoginUserForm {
   password: string;
 }
 
-export interface UserResponse {
-  id: string;
-  email: string;
-  role: 'admin' | 'user';
-}
-
 export interface User {
   id: string;
   email: string;

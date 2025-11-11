@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { Button } from '../button/button';
 
@@ -15,7 +15,7 @@ export class Pagination {
   prev = output();
   next = output();
 
-  pages = computed(() => [...Array(this.totalPages()).keys()].map((_, i) => i));
+  // pages = computed(() => [this.currentPage() - 1, this.currentPage(), this.currentPage() + 1]);
 
   prevPage() {
     this.prev.emit();

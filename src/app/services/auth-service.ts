@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, delay, finalize, map, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { LoginUserForm, RegisterUserForm, User, UserResponse } from '../models/user.model';
-import { mapUser } from '../utils/mapUser';
+import { LoginUserForm, RegisterUserForm, User } from '../models/user.model';
+import { API_CONFIG } from '../config/api.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost:3000/users';
+  private url = `${API_CONFIG.baseUrl}/users`;
 
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -19,7 +19,7 @@ export class AuthService {
   isLoading = signal<boolean>(false);
   error = signal<string>('');
 
-  private saveUser(user: UserResponse) {
+  private saveUser(user: User) {
     this.user.set(user);
     localStorage.setItem('token', user.id);
     this.router.navigate(['/']);
@@ -31,9 +31,8 @@ export class AuthService {
 
   register(newUser: RegisterUserForm): Observable<User | null> {
     this.isLoading.set(true);
-    return this.http.post<UserResponse>(this.url, { ...newUser, role: 'user' }).pipe(
+    return this.http.post<User>(this.url, { ...newUser, role: 'user' }).pipe(
       delay(1000),
-      map(mapUser),
       tap((result) => this.saveUser(result)),
       catchError(() => {
         this.error.set('Something went wrong!');
@@ -46,12 +45,10 @@ export class AuthService {
   login(credentials: LoginUserForm): Observable<User | null> {
     this.isLoading.set(true);
     return this.http
-      .get<UserResponse[]>(
-        `${this.url}?email=${credentials.email}&password=${credentials.password}`
-      )
+      .get<User[]>(`${this.url}?email=${credentials.email}&password=${credentials.password}`)
       .pipe(
         delay(1000),
-        map((result) => result.map(mapUser)[0]),
+        map((result) => result[0]),
         tap((result) => {
           const user = result;
 
@@ -63,5 +60,19 @@ export class AuthService {
         }),
         finalize(() => this.isLoading.set(false))
       );
+  }
+
+  getLoggedUser(): Observable<User | null> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<User>(`${this.url}/${token}`).pipe(
+      delay(1000),
+      tap((result) => this.saveUser(result)),
+      catchError(() => {
+        this.error.set('Something went wrong!');
+        return of(null);
+      }),
+      finalize(() => this.isLoading.set(false))
+    );
   }
 }

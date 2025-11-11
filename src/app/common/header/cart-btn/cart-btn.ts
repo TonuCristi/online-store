@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 
 import { Button } from '../../button/button';
 import { ClickOutside } from '../../../directives/click-outside';
+import { CartService } from '../../../services/cart-service';
 
 @Component({
   selector: 'app-cart-btn',
@@ -12,7 +13,13 @@ import { ClickOutside } from '../../../directives/click-outside';
   styleUrl: './cart-btn.scss',
 })
 export class CartBtn {
+  private readonly cartService = inject(CartService);
+
   isCartOpen = signal<boolean>(false);
+
+  get cartItemsCount() {
+    return this.cartService.cartItemsCount();
+  }
 
   openCart() {
     if (!this.isCartOpen()) {

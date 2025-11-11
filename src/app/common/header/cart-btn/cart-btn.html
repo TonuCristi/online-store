@@ -1,6 +1,6 @@
 <button appButton class="cart-btn" (click)="openCart()">
   C
-  <span>5</span>
+  <span>{{ cartItemsCount }}</span>
 </button>
 
 @if(isCartOpen()){

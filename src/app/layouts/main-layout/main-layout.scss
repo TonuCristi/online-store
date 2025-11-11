@@ -1,16 +1,17 @@
 @use 'variables' as var;
 
+.spinner-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 main {
   padding: 1rem;
   max-width: 120rem;
   min-height: 100dvh;
   margin: 0 auto;
-
-  .spinner-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 @media (min-width: var.$screen-xs) {
