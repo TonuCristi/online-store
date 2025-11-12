@@ -8,6 +8,7 @@
     <app-products-filters />
   </div>
   <h1>{{ category()?.name }}</h1>
+  <app-categories-dropdown />
   <select appSelect size="full" [options]="options" (onChange)="sortData($event)"></select>
   <div class="products-list-wrapper">
     <app-products-list [products]="products()" [isProductsLoading]="isProductsLoading()" />

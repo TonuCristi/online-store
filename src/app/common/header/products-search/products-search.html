@@ -8,7 +8,7 @@
 />
 
 @if(isSearchResultsOpen()){
-<ul appClickOutside (clickOutside)="closeSearchResults()">
+<ul appClickOutside (onClickOutside)="closeSearchResults()">
   @if(isSearchLoading()){
   <app-spinner size="small" class="spinner" />
   } @else if(!searchValue().length){

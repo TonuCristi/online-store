@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -23,7 +23,7 @@ import { FormField } from '../../../../common/form-field/form-field';
   templateUrl: './register-form.html',
   styleUrl: './register-form.scss',
 })
-export class RegisterForm implements OnDestroy {
+export class RegisterForm implements OnInit {
   private readonly authService = inject(AuthService);
 
   get isRegisterLoading() {
@@ -81,7 +81,7 @@ export class RegisterForm implements OnDestroy {
     };
   }
 
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.authService.clearError();
   }
 

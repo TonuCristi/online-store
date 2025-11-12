@@ -4,7 +4,7 @@
 </button>
 
 @if(isCartOpen()){
-<div class="cart" appClickOutside (clickOutside)="closeCart()">
+<div class="cart" appClickOutside (onClickOutside)="closeCart()">
   <button appButton class="close-btn" (click)="closeCart()">X</button>
   <ul>
     <li>

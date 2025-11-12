@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { FormField } from '../../../../common/form-field/form-field';
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
-export class LoginForm implements OnDestroy {
+export class LoginForm implements OnInit {
   private readonly authService = inject(AuthService);
 
   get isLoginLoading() {
@@ -51,7 +51,7 @@ export class LoginForm implements OnDestroy {
     }),
   });
 
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.authService.clearError();
   }
 

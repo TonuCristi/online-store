@@ -7,7 +7,9 @@ import { RegisterPage } from './pages/register-page/register-page';
 import { HomePage } from './pages/home-page/home-page';
 import { ProfilePage } from './pages/profile-page/profile-page';
 import { ProductsPage } from './pages/products-page/products-page';
-import { ProductsService } from './services/products-service';
+import { authGuard } from './guards/auth-guard';
+import { guestGuard } from './guards/guest-guard';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 export const routes: Routes = [
   {
@@ -20,13 +22,12 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        loadComponent: () =>
-          import('../app/pages/profile-page/profile-page').then((m) => m.ProfilePage),
+        component: ProfilePage,
+        canActivate: [authGuard],
       },
       {
         path: 'products/:categoryId',
-        loadComponent: () =>
-          import('../app/pages/products-page/products-page').then((m) => m.ProductsPage),
+        component: ProductsPage,
       },
     ],
   },
@@ -37,11 +38,17 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginPage,
+        canActivate: [guestGuard],
       },
       {
         path: 'register',
         component: RegisterPage,
+        canActivate: [guestGuard],
       },
     ],
+  },
+  {
+    path: '**',
+    component: NotFoundPage,
   },
 ];

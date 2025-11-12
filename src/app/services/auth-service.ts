@@ -62,8 +62,16 @@ export class AuthService {
       );
   }
 
+  logout() {
+    this.user.set(null);
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+  }
+
   getLoggedUser(): Observable<User | null> {
     const token = localStorage.getItem('token');
+
+    if (!token) return of(null);
 
     return this.http.get<User>(`${this.url}/${token}`).pipe(
       delay(1000),

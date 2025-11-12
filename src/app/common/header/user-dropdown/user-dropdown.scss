@@ -1,0 +1,78 @@
+@use 'variables' as var;
+
+:host {
+  position: relative;
+}
+
+.dropdown-btn {
+  background-color: var.$color-zinc-700;
+  color: var.$color-zinc-50;
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+
+  .user-photo {
+    height: 3rem;
+    width: 3rem;
+    background-color: var.$color-zinc-50;
+    border-radius: 100%;
+  }
+
+  .username {
+    display: none;
+    white-space: nowrap;
+  }
+
+  @media (min-width: var.$screen-md) {
+    .username {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: var.$screen-md) {
+  .dropdown-btn {
+    padding: 1rem;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 999;
+  margin-top: 1rem;
+  background-color: var.$color-zinc-50;
+  border: 0.2rem solid var.$color-zinc-700;
+  border-radius: 0.7rem;
+  width: 15rem;
+  overflow: hidden;
+
+  .dropdown-item {
+    &[appButton] {
+      all: unset;
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var.$color-zinc-200;
+    }
+  }
+}
+
+@media (min-width: var.$screen-md) {
+  .dropdown {
+    width: 100%;
+  }
+}

@@ -3,10 +3,12 @@
     <a [routerLink]="['/']" class="home-link">OS</a>
     <app-products-search />
     <div class="controls">
+      @if(isLogged){
       <app-cart-btn />
-      <a [routerLink]="['/profile']" class="profile-link"
-        ><button appButton variant="primary">Profile</button></a
-      >
+      <app-user-dropdown />
+      } @else{
+      <a [routerLink]="['/login']"><button appButton variant="primary">Login</button></a>
+      }
     </div>
   </div>
 </header>

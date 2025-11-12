@@ -3,7 +3,7 @@
 </button>
 
 @if(isDropdownOpen()){
-<div class="dropdown" appClickOutside (clickOutside)="closeDropdown()">
+<div class="dropdown" appClickOutside (onClickOutside)="closeDropdown()">
   <h3>All categories</h3>
   <ul>
     @for(category of categories; track category.id){

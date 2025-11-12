@@ -1,9 +1,9 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ProductsFilters } from './components/products-filters/products-filters';
-import { ProductsSort } from './components/products-sort/products-sort';
 import { ProductsList } from './components/products-list/products-list';
 import { Pagination } from '../../common/pagination/pagination';
 import { Spinner } from '../../common/spinner/spinner';
@@ -13,11 +13,19 @@ import { Product, SortType } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { PER_PAGE } from './products.constants';
 import { Option, Select } from '../../common/select/select';
-import { FormsModule } from '@angular/forms';
+import { CategoriesDropdown } from '../home-page/components/categories-dropdown/categories-dropdown';
 
 @Component({
   selector: 'app-products-page',
-  imports: [FormsModule, ProductsFilters, Spinner, ProductsList, Pagination, Select],
+  imports: [
+    FormsModule,
+    ProductsFilters,
+    Spinner,
+    ProductsList,
+    Pagination,
+    Select,
+    CategoriesDropdown,
+  ],
   templateUrl: './products-page.html',
   styleUrl: './products-page.scss',
 })
