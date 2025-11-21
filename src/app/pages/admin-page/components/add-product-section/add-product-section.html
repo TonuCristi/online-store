@@ -1,0 +1,19 @@
+<h3>Add product</h3>
+<form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+  @for(input of inputs;track input.name) {
+  <app-form-field [label]="input.label" [for]="input.for">
+    <input
+      appInput
+      [id]="input.for"
+      [type]="input.type"
+      [placeholder]="input.placeholder"
+      [formControlName]="input.name"
+    />
+  </app-form-field>
+  }
+  <div class="is-active-input">
+    <label for="active">Active</label>
+    <input appInput id="active" type="checkbox" formControlName="isActive" />
+  </div>
+  <button appButton variant="primary">Add</button>
+</form>

@@ -35,16 +35,17 @@ export class ProductsPage implements OnInit {
   private readonly categoriesService = inject(CategoriesService);
 
   products = signal<Product[]>([]);
-  category = signal<Category | null>(null);
-  isLoading = signal<boolean>(true);
-  isProductsLoading = signal<boolean>(false);
   error = signal<string>('');
+  isLoading = signal<boolean>(false);
+  category = signal<Category | null>(null);
+  isProductsLoading = signal<boolean>(false);
   currentPage = signal<number>(0);
   totalPages = signal<number>(0);
   sortType = signal<SortType>('name');
+  categoryId = signal<string>(this.activatedRoute.snapshot.params['categoryId']);
 
-  readonly productsParams = computed(() => ({
-    categoryId: this.categoryId,
+  private readonly productsParams = computed(() => ({
+    categoryId: this.categoryId(),
     currentPage: this.currentPage(),
     perPage: PER_PAGE,
     sortType: this.sortType(),
@@ -56,21 +57,26 @@ export class ProductsPage implements OnInit {
     { value: 'price-descending', text: 'Price descending' },
   ];
 
-  get categoryId() {
-    return this.activatedRoute.snapshot.params['categoryId'];
-  }
-
   ngOnInit(): void {
-    this.loadInitialData();
+    this.activatedRoute.params.subscribe((params) => {
+      this.categoryId.set(params['categoryId']);
+      this.sortType.set('name');
+      this.loadInitialData();
+    });
   }
 
   loadProducts() {
     this.isProductsLoading.set(true);
 
     this.productsService.getProducts(this.productsParams()).subscribe({
-      next: (productsResult) => this.updateProducts(productsResult),
-      error: () => this.error.set('Something went wrong!'),
-      complete: () => this.isProductsLoading.set(false),
+      next: (productsResult) => {
+        this.updateProducts(productsResult);
+        this.isProductsLoading.set(false);
+      },
+      error: () => {
+        this.error.set('Something went wrong!');
+        this.isProductsLoading.set(false);
+      },
     });
   }
 
@@ -100,18 +106,23 @@ export class ProductsPage implements OnInit {
   }
 
   loadInitialData() {
+    this.isLoading.set(true);
+
     forkJoin({
       productsResult: this.productsService.getProducts(this.productsParams()),
-      productsTotalPagesResult: this.productsService.getProductsTotalPages(this.categoryId),
-      categoryResult: this.categoriesService.getCategory(this.categoryId),
+      productsTotalPagesResult: this.productsService.getProductsTotalPages(this.categoryId()),
+      categoryResult: this.categoriesService.getCategory(this.categoryId()),
     }).subscribe({
       next: ({ productsResult, productsTotalPagesResult, categoryResult }) => {
         this.updateProducts(productsResult);
         this.totalPages.set(productsTotalPagesResult);
         this.category.set(categoryResult);
+        this.isLoading.set(false);
       },
-      error: () => this.error.set('Something went wrong!'),
-      complete: () => this.isLoading.set(false),
+      error: () => {
+        this.error.set('Something went wrong!');
+        this.isLoading.set(false);
+      },
     });
   }
 

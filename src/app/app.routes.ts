@@ -7,9 +7,11 @@ import { RegisterPage } from './pages/register-page/register-page';
 import { HomePage } from './pages/home-page/home-page';
 import { ProfilePage } from './pages/profile-page/profile-page';
 import { ProductsPage } from './pages/products-page/products-page';
+import { AdminPage } from './pages/admin-page/admin-page';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 import { authGuard } from './guards/auth-guard';
 import { guestGuard } from './guards/guest-guard';
-import { NotFoundPage } from './pages/not-found-page/not-found-page';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
   {
@@ -24,6 +26,11 @@ export const routes: Routes = [
         path: 'profile',
         component: ProfilePage,
         canActivate: [authGuard],
+      },
+      {
+        path: 'admin',
+        component: AdminPage,
+        canActivate: [authGuard, adminGuard],
       },
       {
         path: 'products/:categoryId',

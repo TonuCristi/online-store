@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
-import { HomeSection } from '../home-section/home-section';
-// import { ProductCard } from '../../../products-page/components/product-card/product-card';
+import { ProductCard } from '../../../products-page/components/product-card/product-card';
+import { Product } from '../../../../models/product.model';
 
 @Component({
   selector: 'app-latest-products-section',
-  imports: [HomeSection],
+  imports: [ProductCard],
   templateUrl: './latest-products-section.html',
   styleUrl: './latest-products-section.scss',
 })
-export class LatestProductsSection {}
+export class LatestProductsSection {
+  latestProducts = input.required<Product[]>();
+}

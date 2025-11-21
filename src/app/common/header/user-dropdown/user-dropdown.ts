@@ -16,6 +16,12 @@ export class UserDropdown {
 
   isOpen = signal<boolean>(false);
 
+  get userRole() {
+    const user = this.authService.user();
+
+    return user && user.role;
+  }
+
   openDropdown() {
     if (!this.isOpen()) {
       this.isOpen.set(true);

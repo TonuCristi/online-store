@@ -15,13 +15,19 @@ export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
 
+  isLogged = signal<boolean>(!!localStorage.getItem('token'));
   user = signal<User | null>(null);
   isLoading = signal<boolean>(false);
   error = signal<string>('');
 
   private saveUser(user: User) {
+    this.isLogged.set(true);
     this.user.set(user);
+    this.isLoading.set(true);
     localStorage.setItem('token', user.id);
+  }
+
+  private navigateToHome() {
     this.router.navigate(['/']);
   }
 
@@ -33,7 +39,10 @@ export class AuthService {
     this.isLoading.set(true);
     return this.http.post<User>(this.url, { ...newUser, role: 'user' }).pipe(
       delay(1000),
-      tap((result) => this.saveUser(result)),
+      tap((result) => {
+        this.saveUser(result);
+        this.navigateToHome();
+      }),
       catchError(() => {
         this.error.set('Something went wrong!');
         return of(null);
@@ -50,9 +59,8 @@ export class AuthService {
         delay(1000),
         map((result) => result[0]),
         tap((result) => {
-          const user = result;
-
-          this.saveUser(user);
+          this.saveUser(result);
+          this.navigateToHome();
         }),
         catchError(() => {
           this.error.set('Something went wrong!');
@@ -63,6 +71,7 @@ export class AuthService {
   }
 
   logout() {
+    this.isLogged.set(false);
     this.user.set(null);
     localStorage.removeItem('token');
     this.router.navigate(['/']);

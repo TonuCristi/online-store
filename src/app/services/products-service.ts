@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
 
-import { Product, SortType } from '../models/product.model';
+import { AddProduct, Product, SortType } from '../models/product.model';
 import { PER_PAGE } from '../pages/products-page/products.constants';
 import { API_CONFIG } from '../config/api.config';
 
@@ -20,11 +20,21 @@ export class ProductsService {
   private url = `${API_CONFIG.baseUrl}/products`;
   private http = inject(HttpClient);
 
+  // products = signal<Product[]>([]);
+  // isLoading = signal<boolean>(false);
+  // error = signal<string>('');
+
   getProductsTotalPages(categoryId: string): Observable<number> {
-    return this.http.get<Product[]>(`${this.url}?categoryId=${categoryId}`).pipe(
-      delay(1000),
-      map((result) => Math.ceil(result.length / PER_PAGE))
-    );
+    return this.http
+      .get<Product[]>(this.url, {
+        params: {
+          categoryId,
+        },
+      })
+      .pipe(
+        delay(1000),
+        map((result) => Math.ceil(result.length / PER_PAGE))
+      );
   }
 
   getProducts(params: ProductsParams): Observable<Product[]> {
@@ -38,9 +48,17 @@ export class ProductsService {
     }[params.sortType];
 
     return this.http
-      .get<Product[]>(
-        `${this.url}?categoryId=${params.categoryId}&_start=${start}&_limit=${limit}&_sort=${sort}`
-      )
+      .get<Product[]>(this.url, {
+        params: { categoryId: params.categoryId, _start: start, _limit: limit, _sort: sort },
+      })
+      .pipe(delay(1000));
+  }
+
+  getLatestProducts() {
+    return this.http
+      .get<Product[]>(this.url, {
+        params: { _limit: 4 },
+      })
       .pipe(delay(1000));
   }
 
@@ -55,5 +73,9 @@ export class ProductsService {
         );
       })
     );
+  }
+
+  addProduct(newProduct: AddProduct) {
+    console.log('Product added!');
   }
 }

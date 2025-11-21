@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
-import { HomeSection } from '../home-section/home-section';
-
 @Component({
   selector: 'app-hero-section',
-  imports: [HomeSection],
+  imports: [],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.scss',
 })

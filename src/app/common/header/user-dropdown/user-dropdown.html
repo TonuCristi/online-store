@@ -6,6 +6,9 @@
 @if(isOpen()) {
 <ul appClickOutside (onClickOutside)="closeDropdown()" class="dropdown">
   <li><a [routerLink]="['/profile']" class="dropdown-item">Profile</a></li>
+  @if(userRole === "admin"){
+  <li><a [routerLink]="['/admin']" class="dropdown-item">Admin</a></li>
+  }
   <li><button appButton class="dropdown-item" (onClick)="logoutUser()">Log out</button></li>
 </ul>
 }

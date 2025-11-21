@@ -21,8 +21,6 @@ export class ProductCard {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log(this.product());
-
     this.cartService.addToCart(this.product());
   }
 }

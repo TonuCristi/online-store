@@ -12,3 +12,12 @@ export interface Product {
 }
 
 export type SortType = 'name' | 'price-ascending' | 'price-descending';
+
+export interface AddProduct {
+  name: string;
+  description: string;
+  price: string;
+  stockQuantity: string;
+  sku: string;
+  isActive: boolean;
+}

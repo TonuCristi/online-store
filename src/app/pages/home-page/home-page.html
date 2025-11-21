@@ -1,3 +1,9 @@
+@if(isLatestProductsLoading()){
+<div class="spinner-wrapper">
+  <app-spinner size="big" />
+</div>
+} @else {
 <app-categories-dropdown />
 <app-hero-section />
-<app-latest-products-section />
+<app-latest-products-section [latestProducts]="latestProducts()" />
+}

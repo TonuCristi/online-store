@@ -1,0 +1,25 @@
+@use 'variables' as var;
+
+:host {
+  border: 0.2rem solid var.$color-zinc-800;
+  border-radius: 0.7rem;
+  padding: 1rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .is-active-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

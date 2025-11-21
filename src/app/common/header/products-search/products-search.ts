@@ -44,11 +44,10 @@ export class ProductsSearch {
     this.productsService.searchProducts(this.searchValue().toLowerCase()).subscribe({
       next: (result) => {
         this.searchedProducts.set(result);
+        this.isSearchLoading.set(false);
       },
       error: () => {
         this.searchError.set('Something went wrong!');
-      },
-      complete: () => {
         this.isSearchLoading.set(false);
       },
     });
